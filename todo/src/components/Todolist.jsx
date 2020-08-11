@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { add, remove, complete,edit,editname } from "./redux/action";
 
-class Todolist extends React.Component {
+class Todolist extends React.Purecomponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ class Todolist extends React.Component {
 
   handleEdit = () => {
     this.setState({
-      edit: !this.state.edit,
+      edit: true,
       
     });
   };
@@ -129,7 +129,7 @@ class Todolist extends React.Component {
               })
               .map((item, index) => (
                 <div key={index}>
-                  <div style={{ textDecoration: "lineThrough" }}>
+                  <div style={{ textDecoration: "line-through" }}>
                     {" "}
                     {item.name}{" "}
                   </div>
@@ -148,7 +148,7 @@ class Todolist extends React.Component {
                     Edit
                   </button>:
                        <div><input type ="text" value ={this.state.name} onChange={this.handleChange }/>
-                       <button onClick={(e)=>edit(e.target.id),this.setState({edit:false})} id={item.id}>
+                       <button onClick={(e)=>edit(e.target.id)} id={item.id}>
                        Edit
                      </button>
                      </div>
